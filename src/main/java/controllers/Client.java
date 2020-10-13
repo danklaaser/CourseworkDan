@@ -34,10 +34,10 @@ public class Client {
     }
 
     @GET
-    @Path("{path}")
+    @Path("client/{path}")
     @Produces({"text/html"})
     public byte[] getIHTMLFile(@PathParam("path") String path) {
-        return getFile(path);
+        return getFile("client/" + path);
     }
 
     private byte[] getFile(String filename) {
