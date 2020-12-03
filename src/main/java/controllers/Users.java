@@ -1,5 +1,6 @@
 package controllers;
 
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import server.Main;
@@ -22,7 +23,7 @@ public class Users {
         try {
             PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, UserName FROM Users");
             ResultSet results = ps.executeQuery();
-            while (results.next()==true) {
+            while (results.next() == true) {
                 JSONObject row = new JSONObject();
                 row.put("UserID", results.getInt(1));
                 row.put("UserName", results.getString(2));
@@ -56,10 +57,12 @@ public class Users {
             System.out.println("Database error: " + exception.getMessage());
             return "{\"Error\": \"Unable to get item, please see server console for more info.\"}";
         }
+    }
 
         @POST
         @Path("login")
-        public String UsersLogin(@FormDataParam("UserName") String UserName, @FormDataParam("PassWord") String PassWord) {
+        public String UsersLogin(@FormDataParam("UserName") String UserName, @FormDataParam("PassWord") String PassWord){
+
             System.out.println("Invoked loginUser() on path users/login");
             try {
                 PreparedStatement ps1 = Main.db.prepareStatement("SELECT PassWord FROM Users WHERE UserName = ?");
@@ -90,5 +93,5 @@ public class Users {
         }
 
 
-    }
+
 }
