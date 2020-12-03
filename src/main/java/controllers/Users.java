@@ -9,6 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.UUID;
 
 @Path("users/")
 @Consumes(MediaType.MULTIPART_FORM_DATA)
