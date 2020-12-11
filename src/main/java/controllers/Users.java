@@ -45,13 +45,13 @@ public class Users {
     public String GetUser(@PathParam("UserID") Integer UserID) {
         System.out.println("Invoked Users.GetUser() with UserID " + UserID);
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT UserName FROM Users WHERE UserID = ?");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT Username FROM Users WHERE UserID = ?");
             ps.setInt(1, UserID);
             ResultSet results = ps.executeQuery();
             JSONObject response = new JSONObject();
             if (results.next() == true) {
                 response.put("UserID", UserID);
-                response.put("UserName", results.getString(1));
+                response.put("Username", results.getString(1));
             }
             return response.toString();
         } catch (Exception exception) {
@@ -62,23 +62,23 @@ public class Users {
 
         @POST
         @Path("login")
-        public String UsersLogin(@FormDataParam("UserName") String UserName, @FormDataParam("PassWord") String PassWord){
+        public String UsersLogin(@FormDataParam("Username") String Username, @FormDataParam("Password") String Password){
 
             System.out.println("Invoked loginUser() on path users/login");
             try {
-                PreparedStatement ps1 = Main.db.prepareStatement("SELECT PassWord FROM Users WHERE UserName = ?");
-                ps1.setString(1, UserName);
+                PreparedStatement ps1 = Main.db.prepareStatement("SELECT Password FROM Users WHERE Username = ?");
+                ps1.setString(1, Username);
                 ResultSet loginResults = ps1.executeQuery();
                 if (loginResults.next() == true) {
                     String correctPassword = loginResults.getString(1);
-                    if (PassWord.equals(correctPassword)) {
+                    if (Password.equals(correctPassword)) {
                         String Token = UUID.randomUUID().toString();
-                        PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Users SET Token = ? WHERE UserName = ?");
+                        PreparedStatement ps2 = Main.db.prepareStatement("UPDATE Users SET Token = ? WHERE Username = ?");
                         ps2.setString(1, Token);
-                        ps2.setString(2, UserName);
+                        ps2.setString(2, Username);
                         ps2.executeUpdate();
                         JSONObject userDetails = new JSONObject();
-                        userDetails.put("UserName", UserName);
+                        userDetails.put("Username", Username);
                         userDetails.put("Token", Token);
                         return userDetails.toString();
                     } else {

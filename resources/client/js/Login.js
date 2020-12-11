@@ -1,5 +1,4 @@
 function UsersLogin() {
-    //debugger;
     console.log("Invoked UsersLogin() ");
     let url = "/users/login";
     let formData = new FormData(document.getElementById('LoginForm'));
@@ -14,7 +13,7 @@ function UsersLogin() {
             alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
         } else {
             Cookies.set("Token", response.Token);
-            Cookies.set("UserName", response.UserName);
+            Cookies.set("Username", response.Username);
             window.open("index.html", "_self");       //open index.html in same tab
         }
     });
