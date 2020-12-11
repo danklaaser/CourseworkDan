@@ -1,8 +1,8 @@
 "use strict";
-function getUsersList() {
+function get() {
     //debugger;
-    console.log("Invoked getUsersList()");     //console.log your BFF for debugging client side - also use debugger statement
-    const url = "/users/list/";    		// API method on web server will be in Users class, method list
+    console.log("Invoked get()");     //console.log your BFF for debugging client side - also use debugger statement
+    const url = "/users/get/";    		// API method on web server will be in Users class, method list
     fetch(url, {
         method: "GET",				//Get method
     }).then(response => {

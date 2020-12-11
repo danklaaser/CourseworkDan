@@ -17,17 +17,16 @@ import java.util.UUID;
 
 public class Users {
     @GET
-    @Path("list")
-    public String UsersList() {
-        System.out.println("Invoked Users.UsersList()");
+    @Path("get")
+    public String get() {
+        System.out.println("Invoked Users.get()");
         JSONArray response = new JSONArray();
         try {
-            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, UserName FROM Users");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT Name of City FROM Destinations");
             ResultSet results = ps.executeQuery();
             while (results.next() == true) {
                 JSONObject row = new JSONObject();
-                row.put("UserID", results.getInt(1));
-                row.put("UserName", results.getString(2));
+                row.put("Name of City", results.getInt(1));
                 response.add(row);
             }
             return response.toString();
