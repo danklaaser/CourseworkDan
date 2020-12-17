@@ -4,7 +4,7 @@ function UsersLogin() {
     let formData = new FormData(document.getElementById('LoginForm'));
 
     fetch(url, {
-        method: "POST",
+        method: "POST", //This is a test
         body: formData,
     }).then(response => {
         return response.json();                 //now return that promise to JSON

@@ -92,6 +92,23 @@ public class Users {
             }
         }
 
+        @POST
+        @Path("SavedDestinations")
+        public String SavedDestinations(@FormDataParam("SavedDestination1") String SavedDestination1, @FormDataParam("SavedDestination2") String SavedDestination2, @FormDataParam("SavedDestination3") String SavedDestination3, @FormDataParam("Username") String Username) {
+            try {
+                PreparedStatement ps = Main.db.prepareStatement("UPDATE Login SET SavedDestination1 = ?, SavedDestination2 = ?, SavedDestination3 = ? WHERE Username = ?");
+                ps.setString(1, SavedDestination1);
+                ps.setString(2, SavedDestination2);
+                ps.setString(3, SavedDestination3);
+                ps.setString(4, Username);
+                ps.execute();
+                return "{\"OK\": \"Saved Destination\"}";
+            } catch(Exception exception) {
+                System.out.println("Database error: " + exception.getMessage());
+                return "{\"Error\": \"Unable to update item, please see server console for more info.\"}";
+            }
+        }
+
 
 
 }

@@ -23,3 +23,22 @@ function formatUsersList(myJSONArray){
     }
     document.getElementById("UsersTable").innerHTML = dataHTML;
 }
+
+function saveDestinations(SelectedDestination){
+    console.log("Invoked save");
+    let url = "/users/save";
+
+
+    fetch(url, {
+        method: "POST",
+        body: data,
+    }).then(response => {
+        return response.json();
+    }).then(response => {
+        if (response.hasOwnProperty("Error")) {
+            alert(JSON.stringify(response));        // if it does, convert JSON object to string and alert
+       } else {
+            console.log("Successfully Saved");
+        }
+    })
+}

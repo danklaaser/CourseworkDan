@@ -2,6 +2,7 @@
 <html>
 <head>
     <script src="/client/js/users.js"></script>
+    <script src="/client/js/Homepage.js"></script>
 <style>
     body {
         background-image: url('https://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg');
@@ -84,24 +85,30 @@ p{
 
                 <table id="myTable">
                     <tr class="header">
-                        <th style="width:60%;">Name</th>
+                        <th style="width:60%;">City</th>
                         <th style="width:40%;">Country</th>
+                        <th style="...">Save</th>
+
                     </tr>
                     <tr>
-                        <a href="Paris.html"><button>Paris</button></a>
+                        <td><button id="Paris" onclick="country(this)">Paris</button></td>
                         <td>France</td>
+                        <td><button>Save</button></td>
                     </tr>
                     <tr>
-                        <td>London</td>
+                        <td><button>London</button></td>
                         <td>United Kingdom</td>
+                        <td><button>Save</button></td>
                     </tr>
                     <tr>
+                        <td><button>Singapore</button></td>
                         <td>Singapore</td>
-                        <td>Singapore</td>
+                        <td><button>Save</button></td>
                     </tr>
                     <tr>
-                        <td>Barcelona</td>
+                        <td><button>Barcelona</button></td>
                         <td>Spain</td>
+                        <td><button>Save</button></td>
 
                 </table>
 
@@ -125,6 +132,20 @@ p{
                         }
                     }
                 </script>
+
+                <div id="saveddestinations">
+                    <h2>Saved Destinations</h2>
+                    <table>
+                        <tr>
+                            <td>test</td>
+                        </tr>
+                        <tr>
+                            <td>test2</td>
+                        </tr>
+                    </table>
+                </div>
+
+
 
                 </body>
                 </html>
